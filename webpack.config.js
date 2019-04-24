@@ -3,7 +3,18 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: './app/index.js',
-  output: { path: __dirname, filename: 'dist/build.js'},
+  output: { 
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/assets/'
+  },
+
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    hot: true,
+    inline: true,
+    port: 9000
+  },
 
   module: {
     rules: [
